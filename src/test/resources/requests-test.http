@@ -1,0 +1,38 @@
+### Authors
+GET http://localhost:8080/authors
+Accept: application/json
+
+###
+POST http://localhost:8080/authors
+Content-Type: application/json
+
+{
+  "name" : "Humayun Ahammed"
+}
+
+### Book Categoreis
+GET http://localhost:8080/book-categories
+
+###
+POST http://localhost:8080/book-categories
+Content-Type: application/json
+
+{
+  "name" : "Short Story"
+}
+
+### Books
+GET http://localhost:8080/books
+Accept: application/json
+
+###
+POST http://localhost:8080/custom/books
+Content-Type: application/json
+
+{
+  "isbn": 100002,
+  "title": "Ever Green",
+  "categoryId": 2,
+  "authorIds": [1,2]
+}
+
