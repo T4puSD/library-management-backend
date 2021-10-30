@@ -24,7 +24,8 @@ create table book
     id          bigint primary key,
     isbn        bigint  not null,
     title       varchar not null,
-    category_id int     not null
+    category_id int     not null,
+    foreign key (category_id) references book_category(id)
 );
 
 create table book_author
@@ -48,6 +49,8 @@ create table borrow_log
 (
    id    bigint primary key,
    user_id bigint not null,
-   book_copy_id bigint not null,
-   created datetime not null
+   book_copy_id bigint not null unique,
+   created datetime not null,
+   foreign key (user_id) references user(id),
+   foreign key (book_copy_id) references book_copy(id)
 );
