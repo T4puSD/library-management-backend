@@ -1,5 +1,6 @@
 package com.tapusd.librarymanagement.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -25,6 +27,7 @@ public class Book implements Serializable {
     private String title;
     private Set<Author> authors;
     private BookCategory category;
+    private Set<BookCopy> bookCopies;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -76,6 +79,16 @@ public class Book implements Serializable {
 
     public void setCategory(BookCategory category) {
         this.category = category;
+    }
+
+    @NotNull
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    public Set<BookCopy> getBookCopies() {
+        return bookCopies;
+    }
+
+    public void setBookCopies(Set<BookCopy> bookCopies) {
+        this.bookCopies = bookCopies;
     }
 
     @Transient
