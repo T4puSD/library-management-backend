@@ -7,11 +7,13 @@ import com.tapusd.librarymanagement.repository.AuthorRepository;
 import com.tapusd.librarymanagement.repository.BookCategoryRepository;
 import com.tapusd.librarymanagement.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class BookFacility {
@@ -29,11 +31,9 @@ public class BookFacility {
 
     @Transactional
     public Book save(BookDTO bookDTO) {
-        Set<Author> authors = new HashSet<>();
-        bookDTO.getAuthorIds()
-                .forEach(authorId -> {
-                    authors.add(authorRepository.getById(authorId));
-                });
+        Set<Author> authors = bookDTO.getAuthorIds().stream()
+                .map(authorRepository::getById)
+                .collect(Collectors.toSet());
         Book book = new Book();
         book.setIsbn(bookDTO.getIsbn());
         book.setTitle(bookDTO.getTitle());
@@ -41,5 +41,9 @@ public class BookFacility {
         book.setAuthors(authors);
 
         return bookRepository.save(book);
+    }
+
+    public Page<Book> getAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 }
