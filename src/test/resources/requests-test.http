@@ -39,3 +39,15 @@ Content-Type: application/json
   "authorIds": [1,2]
 }
 
+###
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 4,
+  "isbn": 100004,
+  "title": "Ever Green Part II",
+  "category": "/book-categories/1",
+  "active": true,
+  "authors": ["/authors/1","/authors/2"]
+}
