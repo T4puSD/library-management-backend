@@ -46,4 +46,10 @@ public class BookFacility {
     public Page<Book> getAllBooks(Pageable pageable) {
         return bookRepository.findAll(pageable);
     }
+
+    @Transactional
+    public void deactivateBookById(Long id) {
+        bookRepository.findById(id)
+                .ifPresentOrElse(book -> book.setActive(false), () -> {throw new IllegalArgumentException("Book not found!");});
+    }
 }

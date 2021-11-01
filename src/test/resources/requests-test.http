@@ -22,8 +22,11 @@ Content-Type: application/json
 }
 
 ### Books
-GET http://localhost:8080/books
+GET http://localhost:8080/books?projection=bookProjector
 Accept: application/json
+
+### deactivate
+PUT http://localhost:8080/custom/books/deactivate/3
 
 ###
 POST http://localhost:8080/custom/books
