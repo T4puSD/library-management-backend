@@ -28,6 +28,7 @@ public class Book implements Serializable {
     private Set<Author> authors;
     private BookCategory category;
     private Set<BookCopy> bookCopies;
+    private Boolean active;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,6 +90,16 @@ public class Book implements Serializable {
 
     public void setBookCopies(Set<BookCopy> bookCopies) {
         this.bookCopies = bookCopies;
+    }
+
+    @NotNull
+    @Column(name = "active", nullable = false)
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @Transient

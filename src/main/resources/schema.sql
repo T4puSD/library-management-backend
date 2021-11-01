@@ -25,6 +25,7 @@ create table book
     isbn        bigint  not null,
     title       varchar not null,
     category_id int     not null,
+    active      tinyint not null,
     foreign key (category_id) references book_category(id)
 );
 
