@@ -22,6 +22,10 @@ Content-Type: application/json
 }
 
 ### Books
+GET http://localhost:8080/books
+Accept: application/json
+
+### Books projected
 GET http://localhost:8080/books?projection=bookProjector
 Accept: application/json
 
@@ -50,4 +54,17 @@ Content-Type: application/json
   "category": "/book-categories/1",
   "active": true,
   "authors": ["/authors/1","/authors/2"]
+}
+
+### forming nested resource save request
+PUT http://localhost:8080/books/4
+Content-Type: application/json
+
+{
+"id": 4,
+"isbn": 1000005,
+"title": "Ever Green Part II",
+"category": "/book-categories/1",
+"active": false,
+"authors": ["/authors/1","/authors/2"]
 }
