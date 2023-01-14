@@ -14,23 +14,23 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user")
-public class User implements Serializable {
+@Table(name = "account")
+public class Account implements Serializable {
     private Long id;
     private String email;
     private String pwd;
     private Boolean active;
     private Role role;
 
-    public User() {
+    public Account() {
     }
 
-    public User(User user) {
-        this.id = user.getId();
-        this.email = user.getEmail();
-        this.pwd = user.getPwd();
-        this.active = user.getActive();
-        this.role = user.getRole();
+    public Account(Account account) {
+        this.id = account.getId();
+        this.email = account.getEmail();
+        this.pwd = account.getPwd();
+        this.active = account.getActive();
+        this.role = account.getRole();
     }
 
     @Id
@@ -84,8 +84,8 @@ public class User implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return getId().equals(user.getId()) && getEmail().equals(user.getEmail());
+        Account account = (Account) o;
+        return getId().equals(account.getId()) && getEmail().equals(account.getEmail());
     }
 
     @Override

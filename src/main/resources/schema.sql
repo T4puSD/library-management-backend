@@ -1,4 +1,4 @@
-create table user
+create table if not exists account
 (
     id bigint primary key auto_increment,
     email varchar not null unique,
@@ -49,9 +49,9 @@ create table book_copy
 create table borrow_log
 (
    id    bigint primary key auto_increment,
-   user_id bigint not null,
+   account_id bigint not null,
    book_copy_id bigint not null unique,
    created datetime not null,
-   foreign key (user_id) references user(id),
+   foreign key (account_id) references account(id),
    foreign key (book_copy_id) references book_copy(id)
 );

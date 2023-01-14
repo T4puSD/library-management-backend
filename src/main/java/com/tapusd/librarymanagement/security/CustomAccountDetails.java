@@ -1,6 +1,6 @@
 package com.tapusd.librarymanagement.security;
 
-import com.tapusd.librarymanagement.domain.User;
+import com.tapusd.librarymanagement.domain.Account;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,10 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-public class CustomUserDetails extends User implements UserDetails {
+public class CustomAccountDetails extends Account implements UserDetails {
 
-    public CustomUserDetails(User user) {
-        super(user);
+    public CustomAccountDetails(Account account) {
+        super(account);
     }
 
     @Override

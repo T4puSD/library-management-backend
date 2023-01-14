@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Table(name = "borrow_log")
 public class BorrowLog implements Serializable {
     private Long id;
-    private User user;
+    private Account account;
     private BookCopy bookCopy;
     private LocalDateTime created;
 
@@ -35,13 +35,13 @@ public class BorrowLog implements Serializable {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    public User getUser() {
-        return user;
+    @JoinColumn(name = "account_id", nullable = false)
+    public Account getAccount() {
+        return account;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @NotNull

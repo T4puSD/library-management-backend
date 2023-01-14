@@ -19,12 +19,25 @@ public class SecurityConfigurer {
 
     @Bean
     public  UserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
+        UserDetails student = User.withDefaultPasswordEncoder()
+                .username("student")
                 .password("password")
+                .roles(Role.STUDENT.name())
                 .build();
 
-        return new InMemoryUserDetailsManager(user);
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("password")
+                .roles(Role.ADMIN.name())
+                .build();
+
+        UserDetails facalty= User.withDefaultPasswordEncoder()
+                .username("admin")
+                .password("password")
+                .roles(Role.FACULTY.name())
+                .build();
+
+        return new InMemoryUserDetailsManager(student, admin, facalty);
     }
 
     @Bean

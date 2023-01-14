@@ -1,9 +1,9 @@
 package com.tapusd.librarymanagement.repository;
 
-import com.tapusd.librarymanagement.domain.User;
+import com.tapusd.librarymanagement.domain.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long> {
 }
